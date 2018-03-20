@@ -1,9 +1,13 @@
 language: java
+services:
+- docker
+cache:
+  directories:
+  - "$HOME/.cache"
+
 deploy:
-  provider: npm
-  email: mykyta.dominov@exxcellent.de
-  api_key:
-    secure: qyUvy8HXHCZ7WHpV01Dp+fw0hksrJb/fueI0jK/rA1q0rHAOAF6xalpjVnI2IV9e3aGT8mmeZQTdpDSh3K+LA6Ufc2LiwvzBNvbiitp6sVBV2WaYYjkAAy2t7dvGT8rjvjrGiYr69on2WYT92hyJO3XzsDaCTyVMiGOEKHZc0EJ0X+dOlTzWCil9i7v48IRgFAWSygt3sdXFjxatro/ruPsoy1u0h84tyMHjC5xNwpBOnnq0TYeFIxK43Yb5kMBLpmDjTkrhsg56a2YSg0NBh1TgNh6rOLQKRiMM95cIezoPTXZx0rkBYvdkIemxyKJDLkYwIKm89HpPrRcHfQ5cw0fpXKE/d13bUtLSNVlhlMeIyTg7bs/ghTxoMzQ3vqVk1FwrGsCGZbaQUsxWzkbEZkbt5GXuIMjWXgIu673qUzQejE1pHaRbLpPrrq3fU7btvhYloa05QAyJOpqroS7CYQkQnjBx9+Zv0vs1AOVI7r7Vf1RLsUtBAaKA5EBWSbPondZcjxzhFa3ke3+CtUS955zIjQDWKJdOMcmi60Ltw7zEhcOVsr1aVOc+6eyqmyZIT9jLqVlQQ10Vq5jF4zdfJRgQMZfANjooB4Zr6bzihMydMAFO1RgTnquXxIQOYnhssu1Ieua3mClPTvHUn09q7hfALvbxUcFrfM1fackIrT4=
+  provider: script
+  script: "cp .travis.settings.xml $HOME/.m2/settings.xml && mvn deploy"
+  skip_cleanup: true
   on:
     tags: true
-    repo: mydominov/HelloTravis1

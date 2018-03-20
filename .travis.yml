@@ -1,4 +1,5 @@
 deploy:
+  language: java
   provider: npm
   email: mykyta.dominov@exxcellent.de
   api_key:
